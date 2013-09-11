@@ -2,7 +2,7 @@
 Summary:	Utility libraries for Ruby on Rails
 Name:		ruby-%{pkgname}
 Version:	3.0.3
-Release:	2
+Release:	3
 License:	Ruby-alike
 Group:		Development/Languages
 Source0:	http://rubygems.org/downloads/%{pkgname}-%{version}.gem
@@ -62,6 +62,9 @@ Dokumentacji w formacie ri dla %{pkgname}.
 rm lib/active_support/xml_mini/jdom.rb
 
 %build
+# write .gemspec
+%__gem_helper spec
+
 # UTF8 locale needed for doc generation
 export LC_ALL=en_US.UTF-8
 rdoc --ri --op ri lib
@@ -78,10 +81,11 @@ rm -r ri/{Class,Date,DateTime} \
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT{%{ruby_vendorlibdir},%{ruby_ridir},%{ruby_rdocdir}}
+install -d $RPM_BUILD_ROOT{%{ruby_vendorlibdir},%{ruby_specdir},%{ruby_ridir},%{ruby_rdocdir}}
 cp -a lib/* $RPM_BUILD_ROOT%{ruby_vendorlibdir}
 cp -a ri/* $RPM_BUILD_ROOT%{ruby_ridir}
 cp -a rdoc $RPM_BUILD_ROOT%{ruby_rdocdir}/%{pkgname}-%{version}
+cp -p %{pkgname}-%{version}.gemspec $RPM_BUILD_ROOT%{ruby_specdir}
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -91,6 +95,7 @@ rm -rf $RPM_BUILD_ROOT
 %doc CHANGELOG
 %{ruby_vendorlibdir}/active_support
 %{ruby_vendorlibdir}/active_support.rb
+%{ruby_specdir}/%{pkgname}-%{version}.gemspec
 
 %files rdoc
 %defattr(644,root,root,755)
