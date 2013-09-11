@@ -10,6 +10,9 @@ Source0:	http://rubygems.org/downloads/%{pkgname}-%{version}.gem
 URL:		http://rubyforge.org/projects/activesupport/
 BuildRequires:	rpm-rubyprov
 BuildRequires:	rpmbuild(macros) >= 1.656
+%if %(locale -a | grep -q '^en_US$'; echo $?)
+BuildRequires:	glibc-localedb-all
+%endif
 Requires:	ruby-builder >= 2.1.2
 Requires:	ruby-i18n
 Requires:	ruby-json
@@ -59,6 +62,8 @@ Dokumentacji w formacie ri dla %{pkgname}.
 rm lib/active_support/xml_mini/jdom.rb
 
 %build
+# UTF8 locale needed for doc generation
+export LC_ALL=en_US.UTF-8
 rdoc --ri --op ri lib
 rdoc --op rdoc lib
 rm ri/created.rid
