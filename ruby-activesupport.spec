@@ -2,7 +2,7 @@
 Summary:	Utility libraries for Ruby on Rails
 Name:		ruby-%{pkgname}
 Version:	3.0.3
-Release:	3
+Release:	4
 License:	Ruby-alike
 Group:		Development/Languages
 Source0:	http://rubygems.org/downloads/%{pkgname}-%{version}.gem
@@ -75,9 +75,10 @@ rm -r ri/{Class,Date,DateTime} \
 	ri/{Enumerable,FalseClass,File,Float,Hash} \
 	ri/{Integer,Kernel,Logger} \
 	ri/{Module,NameError,NilClass,Numeric} \
-	ri/{Object,Range,Regexp,String} \
-	ri/{Symbol,Test,Time,TrueClass,Process,Array,BigDecimal} \
-	ri/{Benchmark,ERB,Fixnum,I18n,LoadError}
+	ri/{Object,Range,String} \
+	ri/{Test,Time,TrueClass,Process,Array,BigDecimal} \
+	ri/{Benchmark,ERB,Fixnum,I18n,LoadError} \
+	ri/{LibXML,MissingSourceFile,URI}
 
 %install
 rm -rf $RPM_BUILD_ROOT
