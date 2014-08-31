@@ -1,12 +1,12 @@
 %define pkgname activesupport
 Summary:	Utility libraries for Ruby on Rails
 Name:		ruby-%{pkgname}
-Version:	3.0.3
-Release:	4
+Version:	3.2.19
+Release:	1
 License:	Ruby-alike
 Group:		Development/Languages
 Source0:	http://rubygems.org/downloads/%{pkgname}-%{version}.gem
-# Source0-md5:	474ab3e5963afdad6a9c6c66ff08b16d
+# Source0-md5:	d526f5d67fe426e2896763b2cb8feeb3
 URL:		http://rubyforge.org/projects/activesupport/
 BuildRequires:	rpm-rubyprov
 BuildRequires:	rpmbuild(macros) >= 1.656
@@ -77,7 +77,7 @@ rm -r ri/{Class,Date,DateTime} \
 	ri/{Module,NameError,NilClass,Numeric} \
 	ri/{Object,Range,String} \
 	ri/{Test,Time,TrueClass,Process,Array,BigDecimal} \
-	ri/{Benchmark,ERB,Fixnum,I18n,LoadError} \
+	ri/{Benchmark,ERB,I18n,LoadError} \
 	ri/{LibXML,MissingSourceFile,URI}
 
 %install
@@ -93,7 +93,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc CHANGELOG
+%doc CHANGELOG.md README.rdoc
 %{ruby_vendorlibdir}/active_support
 %{ruby_vendorlibdir}/active_support.rb
 %{ruby_specdir}/%{pkgname}-%{version}.gemspec
