@@ -2,7 +2,7 @@
 Summary:	Utility libraries for Ruby on Rails
 Name:		ruby-%{pkgname}
 Version:	3.2.19
-Release:	1
+Release:	2
 License:	Ruby-alike
 Group:		Development/Languages
 Source0:	http://rubygems.org/downloads/%{pkgname}-%{version}.gem
